@@ -1,8 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . models import *
 
 def index(request):
+    if request.method == 'POST':
+        Make_trip.objects.create(
+            pick_up_location = request.POST['PICK_UP_LOCATION'],
+            drop_off_location = request.POST['DROP_OFF_LOCATION'],
+            pick_up_date = request.POST['PICK_UP_DATE'],
+            drop_off_date = request.POST['DROP_OFF_DATE'],
+            pick_up_time = request.POST['PICK_UP_TIME']
+        )
     return render(request, 'main/index.html')
+
+# def create(request):
+#     Make_trip.objects.create(
+#         pick_up_location = request.POST['PICK_UP_LOCATION'],
+#         drop_off_location = request.POST['DROP_OFF_LOCATION'],
+#         pick_up_date = request.POST['PICK_UP_DATE'],
+#         drop_off_date = request.POST['DROP_OFF_DATE'],
+#         pick_up_time = request.POST['PICK_UP_TIME']
+#     )
 
 def about(request):
     return render(request, 'main/about.html')
