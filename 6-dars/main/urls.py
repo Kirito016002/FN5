@@ -1,10 +1,17 @@
 from django.urls import path
-from .views import (index, allnews, categori, contact)
+from . import views
 
 urlpatterns = [
-    path('', index),
-    path('main/', index, name='main'),
-    path('allnews/', allnews, name='allnews'),
-    path('categori/', categori, name='categori'),
-    path('contact/', contact, name='contact'),
+    path('', views.index),
+    path('main/', views.index, name='main'),
+    path('allnews/', views.allnews, name='allnews'),
+    path('categori/', views.categori, name='categori'),
+    path('contact/', views.contact, name='contact'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    # dashboard
+    path('dashboard', views.dashboard),
+    path('dashboard/region/create', views.create_region, name='create_region'),
+    path('dashboard/region/list', views.regions, name='regions'),
+    path('dashboard/region/update/<int:id>/', views.region_update, name='region_update'),
+    path('dashboard/region/delete/<int:id>/', views.region_delete, name='region_delete'),
 ]
