@@ -84,3 +84,30 @@ def region_update(request, id):
 def region_delete(request, id):
     models.Region.objects.get(id=id).delete()
     return redirect('regions')
+
+
+# CRUD category
+
+def category_list(request):
+    categorys = models.Category.objects.all()
+    return render(request, "dashboard/category/list.html", {'categorys':categorys})
+
+def category_create(request):
+    if request.method == 'POST':
+        models.Category.objects.create(
+            name = request.POST['name'],
+        )
+        return redirect('list')
+    return render(request, "dashboard/category/create.html")
+
+def category_update(request, id):
+    category = models.Category.objects.get(id=id)
+    if request.method == "POST":
+        category.name = request.POST['name']
+        category.save()
+        return redirect('list')
+    return render(request, 'dashboard/category/update.html', {'category':category})
+
+def category_delete(request, id):
+    models.Category.objects.get(id=id).delete()
+    return redirect('list')
