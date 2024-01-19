@@ -1,0 +1,44 @@
+{% extends 'dashboard/base.html' %}
+
+
+<!-- title -->
+{%  block title %}
+About me create
+{%  endblock %}
+<!-- title -->
+
+
+<!-- css -->
+{%  block css %}
+{%  endblock %}
+<!-- css -->
+
+
+{% block content %}
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content">
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <form method='post' enctype="multipart/form-data">
+                    {% csrf_token %} 
+                        <div class="modal-body">
+                            <textarea class="p-1" style="width: 100%;" name="text" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Ma`lumotni o`zgartirish</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   
+{% endblock %}
+
+
+<!-- js -->
+{%  block js %}
+{%  endblock %}
+<!-- js -->
