@@ -15,6 +15,8 @@ class My_equpment(models.Model):
         verbose_name = "My equpment"
         verbose_name_plural = "My equpments"
         
+    def __str__(self):
+        return self.name
         
 class My_portfolio(models.Model):
     path = models.TextField()

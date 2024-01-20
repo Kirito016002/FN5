@@ -37,3 +37,29 @@ def about_me_delete(request, id):
     models.About_me.objects.get(id=id).delete()
     return redirect('about_me_list')
 
+
+# Equpment
+def equpment_list(request):
+    context = models.My_equpment.objects.all()
+    return render(request, 'dashboard/equpment/index.html', {'context':context})
+
+
+def equpment_deteil(request, id):
+    context = models.My_equpment.objects.get(id=id)
+    if request.method == "POST":
+        context.name = request.POST['name']
+        context.save()
+        return redirect('equpment')
+    return render(request, 'dashboard/equpment/deteil.html', {'context':context})
+
+def equpment_create(request):
+    if request.method == 'POST':
+        models.My_equpment.objects.create(
+            name = request.POST['name']
+        )
+        return redirect('equpment')
+    return render(request, 'dashboard/equpment/create.html')
+
+def equpment_delete(request, id):
+    models.My_equpment.objects.get(id=id).delete()
+    return redirect('equpment')
